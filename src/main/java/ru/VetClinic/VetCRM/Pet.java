@@ -11,6 +11,7 @@ public class Pet extends Animal {
     final String id;
     String breed;
     PetType type;
+    boolean isSick;
 
     public Pet(String name, PetType type) {
         this.name = name;

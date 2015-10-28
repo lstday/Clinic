@@ -14,7 +14,6 @@ public class Client {
 
     private static final AtomicInteger petsCount = new AtomicInteger(0);
 
-
     public Client(String clientName, Pet pet) {
         this.clientName = clientName;
         petList.put(petsCount.incrementAndGet(), pet);
@@ -27,6 +26,7 @@ public class Client {
             }
         }
     }
+
     public void addPet(Pet pet) {
         petList.put(petsCount.incrementAndGet(), pet);
     }

@@ -5,14 +5,15 @@ package ru.VetClinic.VetCRM;
  * 23.10.15.
  */
 public class VetCRM {
-    public static VetClinicManager manager = new VetClinicManager();
+    public static final String version = "0.01, pre-aplha";
 
     /**
      * Put here your clinic with name. Name will be used.
-     * Runs your Clinic.
+     * Runs your Clinic. Can two or three.
      * */
     public static void main(String[] args) { //TODO Every one instance of Clinic Must be live in it's own thread. In the near term.
-        manager.runVetClinic("Aibolit");
+        VetClinic aibolit = new VetClinic("Aibolit");
+        VetClinicManager manager = new VetClinicManager(aibolit);
+        manager.runVetClinic();
     }
-
 }
