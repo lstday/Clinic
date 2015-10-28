@@ -42,16 +42,15 @@ public class ReadUserInputImpl implements ReadUserInput, AutoCloseable {
     }
 
     @Override
-    public int getNumber() {
+    public int getNumber(int firstArgOfRange, int secondArgOfRange) {
         int number = Integer.MIN_VALUE;
         do {
             char tempChar = scanner.nextLine().charAt(0);
-//            char tempChar = '-';
-            if ((tempChar - '0' < 0) || (tempChar - '0' > 10))
+            if ((tempChar - '0' < firstArgOfRange) || (tempChar - '0' > secondArgOfRange))
                 System.out.println("You must enter correct value");
             else
                 number = tempChar - '0';
-        } while (number < 0 || number > 10);
+        } while (number < firstArgOfRange || number > secondArgOfRange);
         return number;
     }
 

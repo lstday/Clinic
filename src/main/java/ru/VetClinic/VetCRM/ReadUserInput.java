@@ -11,7 +11,7 @@ public interface ReadUserInput {
 
     String getString();
 
-    int getNumber();
+    int getNumber(int firstArgOfRange, int secondArgOfRange);
 
     //char getCharOperator();
 
