@@ -1,3 +1,5 @@
+package ru.VetClinic.VetCRM;
+
 /**
  * Created by lstday
  * 23.10.15.

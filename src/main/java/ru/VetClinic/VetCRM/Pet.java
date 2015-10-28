@@ -1,3 +1,5 @@
+package ru.VetClinic.VetCRM;
+
 import java.util.UUID;
 
 /**

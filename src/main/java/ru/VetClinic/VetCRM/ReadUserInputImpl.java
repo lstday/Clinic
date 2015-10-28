@@ -1,8 +1,15 @@
-/**
+package ru.VetClinic.VetCRM; /**
  * Created by lstday
  * 23.10.15.
  */
+
+import java.util.Scanner;
+
+/**
+ * This class implemented and operates with user input
+ */
 public class ReadUserInputImpl implements ReadUserInput, AutoCloseable {
+    Scanner scanner = new Scanner(System.in);
 
     @Override
     public char getAnswer() {
@@ -18,7 +25,6 @@ public class ReadUserInputImpl implements ReadUserInput, AutoCloseable {
         else if (tempStringAnswer.equalsIgnoreCase("n")) return 'n';
         else return 'q';
     }
-
 
     @Override
     public String getString() {

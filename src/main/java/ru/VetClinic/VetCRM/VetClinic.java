@@ -1,3 +1,5 @@
+package ru.VetClinic.VetCRM;
+
 import java.util.HashMap;
 import java.util.concurrent.atomic.AtomicInteger;
 
@@ -20,13 +22,13 @@ public class VetClinic {
         clientList.put(clientCount.incrementAndGet(), client);
     }
 
-//    public Client[] findClientsByPetName(final String name) { //TODO сделать
+//    public ru.VetCRM.VetClinic.Client[] findClientsByPetName(final String name) { //TODO сделать
 //    }
 //
-//    public String[] getPetNames(Client client){ //TODO сделать
+//    public String[] getPetNames(ru.VetCRM.VetClinic.Client client){ //TODO сделать
 //    }
 //
-//    public void removeClient(Client client) { //TODO сделать
+//    public void removeClient(ru.VetCRM.VetClinic.Client client) { //TODO сделать
 //
 //    }
 
