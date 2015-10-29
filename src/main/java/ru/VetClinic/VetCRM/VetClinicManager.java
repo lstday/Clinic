@@ -1,5 +1,7 @@
 package ru.VetClinic.VetCRM;
 
+import com.sun.org.apache.xpath.internal.SourceTree;
+
 /**
  * Created by lstday
  * 22.10.15.
@@ -14,9 +16,6 @@ public class VetClinicManager {
         this.vetClinic = vetClinic;
     }
 
-    /**
-     * @param
-     */
     public void runVetClinic() {
         System.out.printf("Hello in our Vet Clinic %s, dear Director!\nWant a little work?\n", vetClinic.name);
         showMainMenu();
@@ -79,20 +78,25 @@ public class VetClinicManager {
     private void showClientsSection() {
         System.out.println("You are in the Clients Section. Here you can perform next actions:");
         System.out.println("Press 1 to show all clients.");
-        System.out.println("Press 2 to remove client.");
-        System.out.println("Press 3 to remove pet");
+        System.out.println("Press 2 to add client.");
+        System.out.println("Press 3 to remove client.");
+        System.out.println("Press 4 to remove pet");
         System.out.println("Press 0 to go back.");
-        int userInputNumber = userInput.getNumber(0, 3);
+        int userInputNumber = userInput.getNumber(0, 4);
         switch (userInputNumber) {
             case 1:
-                showAllClients();
+                showAllClientsNames();
                 showClientsSection();
                 break;
             case 2:
-                removeClient();
+                addClient();
                 showClientsSection();
                 break;
             case 3:
+                removeClient();
+                showClientsSection();
+                break;
+            case 4:
                 removePet();
                 showClientsSection();
                 break;
@@ -100,27 +104,22 @@ public class VetClinicManager {
                 showMainMenu();
                 break;
         }
-
     }
 
-    private void removePet() {
-        System.out.println("plug: removing pet");
-    }
-
-    private void showAllSickPets() {
-        System.out.println("plug: showing all sick pets");
-    }
-
-    private void showAllPets() {
-        System.out.println("plug: showing all pets");
+    private void addClient() {
+        System.out.println("Enter name:");
+        String newClientName = userInput.getString();
+        vetClinic.addClient(newClientName); //TODO написано, протестировать
     }
 
     private void removeClient() {
-        System.out.println("plug: removing client");
+        System.out.println("Enter the name of Client to remove:");
+        String clientToRemove = userInput.getString();
+        vetClinic.removeClient(clientToRemove);
     }
 
-    private void showAllClients() {
-        System.out.println("plug: showing all clients");
+    private void showAllClientsNames() {
+        vetClinic.showAllClientsNames();
     }
 
     private void showAbout() {
@@ -132,4 +131,17 @@ public class VetClinicManager {
         System.out.println("plug: showing inbox. Will be realized in version 1.1");
     }
 
+    private void showAllSickPets() {
+        vetClinic.showAllSickPets();
+    }
+
+    private void showAllPets() {
+        vetClinic.showAllPets();
+    }
+
+    private void removePet() {
+        System.out.println("Enter the name of Pet to remove:");
+        String petToRemove = userInput.getString();
+        vetClinic.removePet(petToRemove);
+    }
 }

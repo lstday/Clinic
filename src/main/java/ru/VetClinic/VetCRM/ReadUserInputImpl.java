@@ -14,7 +14,7 @@ public class ReadUserInputImpl implements ReadUserInput, AutoCloseable {
     @Override
     public char getAnswer() {
         Character answer = null;
-        String tempStringAnswer = "";
+        String tempStringAnswer;
         do {
             tempStringAnswer = scanner.next();
             if ((!tempStringAnswer.equalsIgnoreCase("y") && !tempStringAnswer.equalsIgnoreCase("n") && !tempStringAnswer.equalsIgnoreCase("q")))
@@ -30,18 +30,13 @@ public class ReadUserInputImpl implements ReadUserInput, AutoCloseable {
     public String getString() {
         String userInput;
         do {
-            userInput = scanner.next();
-//            if (scanner.hasNext("q")) {
-//                System.out.println("Entered q - emergency exit");
-//                System.exit(0);
-//            }
+            userInput = scanner.nextLine();
             if (userInput.length() < 3) {
                 System.out.println("You must enter at least 3 symbols!");
-                userInput = null; //TODO придумать метод, который обнуляет объекты.
+                userInput = null;
             }
         }
         while (userInput == null);
-
         return userInput;
     }
 
@@ -50,10 +45,6 @@ public class ReadUserInputImpl implements ReadUserInput, AutoCloseable {
         int number = Integer.MIN_VALUE;
         do {
             char tempChar = scanner.nextLine().charAt(0);
-//            if (scanner.hasNext("q")) {
-//                System.out.println("Entered q - emergency exit");
-//                System.exit(0);
-//            }
             if ((tempChar - '0' < firstArgOfRange) || (tempChar - '0' > secondArgOfRange))
                 System.out.println("You must enter correct value");
             else
