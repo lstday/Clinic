@@ -105,13 +105,13 @@ public class VetClinicManager {
     }
 
     private void addClient() {
-        System.out.println("Enter name:");
+        System.out.println("Enter petName:");
         String newClientName = userInput.getString();
         vetClinic.addClient(newClientName); //TODO написано, протестировать
     }
 
     private void removeClient() {
-        System.out.println("Enter the name of Client to remove:");
+        System.out.println("Enter the petName of Client to remove:");
         String clientToRemove = userInput.getString();
         vetClinic.removeClient(clientToRemove);
     }
@@ -138,7 +138,7 @@ public class VetClinicManager {
     }
 
     private void removePet() {
-        System.out.println("Enter the name of Pet to remove:");
+        System.out.println("Enter the petName of Pet to remove:");
         String petToRemove = userInput.getString();
         vetClinic.removePet(petToRemove);
     }

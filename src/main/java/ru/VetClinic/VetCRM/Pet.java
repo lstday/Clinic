@@ -7,15 +7,15 @@ import java.util.UUID;
  * 22.10.15.
  */
 public class Pet extends Animal {
-    final String name;
+    final String petName;
     final String id;
     String breed;
-    PetType type;
+    PetType petType;
     boolean isSick;
 
-    public Pet(String name, PetType type) {
-        this.name = name;
-        this.type = type;
+    public Pet(String petName, PetType petType) {
+        this.petName = petName;
+        this.petType = petType;
         id = String.valueOf(UUID.randomUUID());
     }
 }

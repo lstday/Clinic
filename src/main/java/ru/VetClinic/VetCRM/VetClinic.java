@@ -22,20 +22,19 @@ public class VetClinic {
         this.name = name;
     }
 
-    void removeClient(String clientToRemove) {
-        if (haveThisClients(clientToRemove)) {
+    void removeClient(String clientToRemove) { //TODO метод не работает, нужны операции ввода, которого здесь нет
+        if (!haveThisClients(clientToRemove)) {
+            System.out.println("We have't Client with tis petName!");
+        } else {
             System.out.println("We find next clients:");
-            for (Map.Entry<Integer, Client> clientEntry : clientList.entrySet()) {
-                System.out.printf(clientEntry.getKey() + " " + clientEntry.getValue().clientName+"\n"); //TODO Вывести в красивом виде, с шапкой
+            for (Map.Entry<Integer, Client> clientEntry : getAllClients().entrySet()) {
+                System.out.printf(clientEntry.getKey() + " " + clientEntry.getValue().clientName + "\n"); //TODO Вывести в красивом виде, с шапкой
             }
             System.out.printf("Press key to remove");
             //TODO как реализовать, ведь в этом классе нет работы со вводом?
 
             System.out.printf("Client %s was removed", clientToRemove);
-        } else {
-            System.out.println("We have't Client with tis name!");
         }
-
     }
 
     protected Map<Integer, Client> getAllClients() {//TODO написано, протестировать
@@ -52,20 +51,24 @@ public class VetClinic {
 //        }
     }
 
-    protected boolean haveThisClients(String name) {
-//        return getAllClients().containsValue(name); //TODO метод явно не рабочий, гуглить
-        return true;
+    protected boolean haveThisClients(String name) { //TODO написано, протестировать
+        for (Map.Entry<Integer, Client> clientEntry : getAllClients().entrySet()) {
+            if (clientEntry.getValue().clientName.equals(name)) {
+                return true;
+            }
+        }
+        return false;
     }
 
-    protected void showAllPets() {
-        System.out.println("plug: showing all pets");
+    protected void showAllPets() { //TODO написано, протестировать
+        getAllClients().values().forEach(Client::showAllPetsNames);
     }
 
     public void removePet(String petToRemove) {
     }
 
     public void showAllSickPets() {
-
+        System.out.println("plug: coming soon.");
     }
 
     public void addClient(String clientName) {
@@ -74,7 +77,7 @@ public class VetClinic {
         System.out.println("Client successfully added!");
     }
 //
-//    public Client[] findClientsByPetName(final String name) { //TODO сделать
+//    public Client[] findClientsByPetName(final String petName) { //TODO сделать
 //        return null;
 //    }
 //

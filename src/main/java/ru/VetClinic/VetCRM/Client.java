@@ -10,7 +10,7 @@ import java.util.concurrent.atomic.AtomicInteger;
  */
 public class Client {
     String clientName;
-    Map<Integer, Pet> petList = new HashMap<>();
+    private Map<Integer, Pet> petList = new HashMap<>();
 
     private static final AtomicInteger petsCount = new AtomicInteger(0);
 
@@ -20,28 +20,33 @@ public class Client {
     }
 
     public Client(String clientName) {
-        this.clientName=clientName;
+        this.clientName = clientName;
     }
 
     private void showAllSickPets() {
         System.out.println("plug: showing all sick pets");
     }
 
+//    public void removePet(Pet pet) {
+//        for (Map.Entry<Integer, Pet> entry : petList.entrySet()) {
+//            if (entry.getValue().equals(pet)) {
+//                petList.remove(pet);
+//            }
+//        }
+//    }
 
-    public void removePet(Pet pet) {
-        for (Map.Entry<Integer, Pet> entry : petList.entrySet()) {
-            if (entry.getValue().equals(pet)) {
-                petList.remove(pet);
-            }
-        }
-    }
-
-    protected Map<Integer, Pet> getAllPets() {
+    public Map<Integer, Pet> getAllPets() {
         return petList;
     }
 
-
-    public void addPet(Pet pet) {
-        petList.put(petsCount.incrementAndGet(), pet);
+    void showAllPetsNames() {
+        System.out.println("There are this clients:");
+        for (Pet pet : getAllPets().values()) {
+            System.out.println(pet.petName);
+        }
     }
+
+//    public void addPet(Pet pet) {
+//        petList.put(petsCount.incrementAndGet(), pet);
+//    }
 }
