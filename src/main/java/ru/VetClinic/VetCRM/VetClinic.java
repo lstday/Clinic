@@ -1,7 +1,6 @@
 package ru.VetClinic.VetCRM;
 
 import java.util.HashMap;
-import java.util.Iterator;
 import java.util.Map;
 import java.util.concurrent.atomic.AtomicInteger;
 
@@ -16,7 +15,7 @@ import java.util.concurrent.atomic.AtomicInteger;
 public class VetClinic {
     protected String name;
 
-    private static final AtomicInteger clientCount = new AtomicInteger(0);
+    private AtomicInteger clientCount = new AtomicInteger(0);
     private Map<Integer, Client> clientList = new HashMap<>();
 
     public VetClinic(String name) {
@@ -25,7 +24,13 @@ public class VetClinic {
 
     void removeClient(String clientToRemove) {
         if (haveThisClients(clientToRemove)) {
-            //TODO логика удаления
+            System.out.println("We find next clients:");
+            for (Map.Entry<Integer, Client> clientEntry : clientList.entrySet()) {
+                System.out.printf(clientEntry.getKey() + " " + clientEntry.getValue().clientName+"\n"); //TODO Вывести в красивом виде, с шапкой
+            }
+            System.out.printf("Press key to remove");
+            //TODO как реализовать, ведь в этом классе нет работы со вводом?
+
             System.out.printf("Client %s was removed", clientToRemove);
         } else {
             System.out.println("We have't Client with tis name!");
@@ -42,10 +47,14 @@ public class VetClinic {
         for (Client client : getAllClients().values()) {
             System.out.println(client.clientName);
         }
+//        for (Map.Entry<Integer, Client> clientEntry : clientList.entrySet()) {
+//            System.out.println(clientEntry.getKey()+" "+clientEntry.getValue().clientName);
+//        }
     }
 
     protected boolean haveThisClients(String name) {
-        return getAllClients().containsValue(name); //TODO метод явно не рабочий, гуглить
+//        return getAllClients().containsValue(name); //TODO метод явно не рабочий, гуглить
+        return true;
     }
 
     protected void showAllPets() {

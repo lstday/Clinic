@@ -13,7 +13,6 @@ public class ReadUserInputImpl implements ReadUserInput, AutoCloseable {
 
     @Override
     public char getAnswer() {
-        Character answer = null;
         String tempStringAnswer;
         do {
             tempStringAnswer = scanner.next();
@@ -42,7 +41,7 @@ public class ReadUserInputImpl implements ReadUserInput, AutoCloseable {
 
     @Override
     public int getNumber(int firstArgOfRange, int secondArgOfRange) {
-        int number = Integer.MIN_VALUE;
+/*        int number = Integer.MIN_VALUE;
         do {
             char tempChar = scanner.nextLine().charAt(0);
             if ((tempChar - '0' < firstArgOfRange) || (tempChar - '0' > secondArgOfRange))
@@ -50,6 +49,18 @@ public class ReadUserInputImpl implements ReadUserInput, AutoCloseable {
             else
                 number = tempChar - '0';
         } while (number < firstArgOfRange || number > secondArgOfRange);
+        return number;
+        // it's old version
+        */
+
+        int number;
+        do {
+            while (!scanner.hasNextInt()) {
+                scanner.next();
+            }
+            number = scanner.nextInt();
+        } while (number < firstArgOfRange || number > secondArgOfRange);
+        scanner.nextLine();
         return number;
     }
 

@@ -1,7 +1,5 @@
 package ru.VetClinic.VetCRM;
 
-import com.sun.org.apache.xpath.internal.SourceTree;
-
 /**
  * Created by lstday
  * 22.10.15.
@@ -10,7 +8,7 @@ public class VetClinicManager {
 
     VetClinic vetClinic;
 
-    public ReadUserInputImpl userInput = new ReadUserInputImpl();
+    private ReadUserInputImpl userInput = new ReadUserInputImpl();
 
     public VetClinicManager(VetClinic vetClinic) {
         this.vetClinic = vetClinic;
