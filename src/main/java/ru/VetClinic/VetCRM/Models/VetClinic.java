@@ -1,6 +1,4 @@
-package ru.VetClinic.VetCRM;
-
-import ru.VetClinic.VetCRM.Models.Client;
+package ru.VetClinic.VetCRM.Models;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -13,20 +11,19 @@ import java.util.concurrent.atomic.AtomicInteger;
 
 public class VetClinic {
     protected String name;
-    private Map<Integer, Client> clientList = new HashMap<>();
-    private final static AtomicInteger clientCount = new AtomicInteger(0);
+    private Map<String, Client> clientList = new HashMap<>();
 
-    public VetClinic(String name) {
-        this.name = name;
-    }
-
-    protected Map<Integer, Client> getClientList() {
-        return clientList;
+    public void addClient(Client client) {
+        if (!isPresent(client)) {
+            clientList.put(client.getUuid(), client);
+        } else {
+            System.out.println("We already have this client.");
+        }
     }
 
     public void removeClient(Client client) {
         if (isPresent(client)) {
-            for (Map.Entry<Integer, Client> integerClientEntry : clientList.entrySet()) {
+            for (Map.Entry<String, Client> integerClientEntry : clientList.entrySet()) {
                 if (integerClientEntry.getValue().equals(client)) {
                     clientList.remove(integerClientEntry.getKey());
                     break;
@@ -37,17 +34,26 @@ public class VetClinic {
         }
     }
 
-    public void addClient(Client client) {
-        if (!isPresent(client)) {
-            clientList.put(clientCount.incrementAndGet(), client);
-        } else {
-            System.out.println("We already have this client.");
-        }
-    }
-
     public boolean isPresent(Client client) {
         return getClientList().containsValue(client);
     }
+
+    //<Constructors>
+    public VetClinic(String name) {
+        this.name = name;
+    }
+    //</Constructors>
+
+
+    //<Getters>
+    public Map<String, Client> getClientList() {
+        return clientList;
+    }
+
+    public String getName() {
+        return name;
+    }
+    //<Getters>
 
 }
 

@@ -3,14 +3,11 @@ package ru.VetClinic.VetCRM;
 import junit.framework.Assert;
 import org.junit.Test;
 import ru.VetClinic.VetCRM.Models.Client;
-import ru.VetClinic.VetCRM.Models.Pet;
-import ru.VetClinic.VetCRM.Models.PetType;
+import ru.VetClinic.VetCRM.Models.VetClinic;
 
 import java.util.HashMap;
 import java.util.Map;
 import java.util.concurrent.atomic.AtomicInteger;
-
-import static org.junit.Assert.*;
 
 /**
  * Created by lstday

@@ -1,5 +1,7 @@
 package ru.VetClinic.VetCRM;
 
+import ru.VetClinic.VetCRM.Models.VetClinic;
+
 /**
  * Created by lstday
  * 22.10.15.
@@ -17,7 +19,7 @@ public class VetClinicManager {
     }
 
     public void runVetClinic() {
-        System.out.printf("Hello in our Vet Clinic %s, dear Director!\nWant a little work?\n", vetClinic.name);
+        System.out.printf("Hello in our Vet Clinic %s, dear Director!\nWant a little work?\n", vetClinic.getName());
         showMainMenu();
     }
 

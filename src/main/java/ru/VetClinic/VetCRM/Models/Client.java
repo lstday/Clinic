@@ -3,7 +3,6 @@ package ru.VetClinic.VetCRM.Models;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.UUID;
-import java.util.concurrent.atomic.AtomicInteger;
 
 /**
  * Created by lstday
@@ -12,33 +11,20 @@ import java.util.concurrent.atomic.AtomicInteger;
 
 public class Client {
     private String clientName;
-    private Map<Integer, Pet> petList = new HashMap<>();
+    private Map<String, Pet> petList = new HashMap<>();
     private String uuid;
-    private final static AtomicInteger petsCount = new AtomicInteger(0);
 
-    public Client(String clientName) {
-        this.clientName = clientName;
-        uuid= UUID.randomUUID().toString();
-    }
-
-    public Client(String clientName, Pet pet) {
-//        this.clientName = clientName;
-//        uuid= UUID.randomUUID().toString();
-        this(clientName);
-        petList.put(petsCount.incrementAndGet(), pet);
-    }
-
-    protected Map<Integer, Pet> getPetList() {
-        return petList;
-    }
-
-    public String getClientName() {
-        return clientName;
+    public void addPet(Pet pet) {
+        if (!isPresent(pet)) {
+            petList.put(pet.getUuid(), pet);
+        } else {
+            System.out.println("This client already have this pet.");
+        }
     }
 
     public void removePet(Pet pet) {
         if (isPresent(pet)) {
-            for (Map.Entry<Integer, Pet> integerClientEntry : getPetList().entrySet()) {
+            for (Map.Entry<String, Pet> integerClientEntry : getPetList().entrySet()) {
                 if (integerClientEntry.getValue().equals(pet)) {
                     getPetList().remove(integerClientEntry.getKey());
                     break;
@@ -49,18 +35,37 @@ public class Client {
         }
     }
 
-
-    public void addPet(Pet pet) {
-        if (!isPresent(pet)) {
-            petList.put(petsCount.incrementAndGet(), pet);
-        }else {
-            System.out.println("This client already have this pet.");
-        }
-    }
-
     public boolean isPresent(Pet pet) {
         return getPetList().containsValue(pet);
     }
+
+    //<Constructors>
+    public Client(String clientName) {
+        this.clientName = clientName;
+        uuid = UUID.randomUUID().toString();
+    }
+
+    public Client(String clientName, Pet pet) {
+        this(clientName);
+        petList.put(pet.getUuid(), pet);
+    }
+    //</Constructors>
+
+
+    //<Getters>
+    public String getUuid() {
+        return uuid;
+    }
+
+    protected Map<String, Pet> getPetList() {
+        return petList;
+    }
+
+    public String getClientName() {
+        return clientName;
+    }
+    //</Getters>
+
 }
 
 

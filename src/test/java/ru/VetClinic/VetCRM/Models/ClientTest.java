@@ -2,7 +2,6 @@ package ru.VetClinic.VetCRM.Models;
 
 import junit.framework.Assert;
 import org.junit.Test;
-import ru.VetClinic.VetCRM.VetClinic;
 
 /**
  * Created by lstday

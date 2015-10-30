@@ -1,12 +1,14 @@
 package ru.VetClinic.VetCRM;
 
+import ru.VetClinic.VetCRM.Models.VetClinic;
+
 /**
  * Created by lstday
  * 23.10.15.
  */
 //переименовать
 public class VetCRM {
-    public static final String version = "0.03, pre-aplha";
+    public static final String version = "0.05, pre-aplha";
 
     /**
      * Put here your clinic with petName. Name will be used.
