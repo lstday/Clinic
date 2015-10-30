@@ -1,4 +1,4 @@
-package ru.VetClinic.VetCRM;
+package ru.VetClinic.VetCRM.Models;
 
 /**
  * Created by lstday

@@ -4,6 +4,8 @@ package ru.VetClinic.VetCRM;
  * Created by lstday
  * 22.10.15.
  */
+
+//универсальный интерфейс actions - readuserinput
 public class VetClinicManager {
 
     VetClinic vetClinic;
@@ -18,6 +20,7 @@ public class VetClinicManager {
         System.out.printf("Hello in our Vet Clinic %s, dear Director!\nWant a little work?\n", vetClinic.name);
         showMainMenu();
     }
+
 
     protected void showMainMenu() {
         System.out.println("You are in the Main menu. Here you can perform next actions:");
@@ -56,15 +59,15 @@ public class VetClinicManager {
         int userInputNumber = userInput.getNumber(0, 3);
         switch (userInputNumber) {
             case 1:
-                showAllPets();
+//                showAllPets();
                 showPetsSection();
                 break;
             case 2:
-                showAllSickPets();
+//                showAllSickPets();
                 showPetsSection();
                 break;
             case 3:
-                removePet();
+//                removePet();
                 showMainMenu();
                 break;
             case 0:
@@ -83,7 +86,7 @@ public class VetClinicManager {
         int userInputNumber = userInput.getNumber(0, 4);
         switch (userInputNumber) {
             case 1:
-                showAllClientsNames();
+//                showAllClientsNames();
                 showClientsSection();
                 break;
             case 2:
@@ -107,18 +110,18 @@ public class VetClinicManager {
     private void addClient() {
         System.out.println("Enter petName:");
         String newClientName = userInput.getString();
-        vetClinic.addClient(newClientName); //TODO написано, протестировать
+//        vetClinic.addClient(newClientName); //TODO написано, протестировать
     }
 
     private void removeClient() {
         System.out.println("Enter the petName of Client to remove:");
         String clientToRemove = userInput.getString();
-        vetClinic.removeClient(clientToRemove);
+//        vetClinic.removeClient(clientToRemove);
     }
 
-    private void showAllClientsNames() {
-        vetClinic.showAllClientsNames();
-    }
+//    private void showAllClientsNames() {
+//        vetClinic.showAllClientsNames();
+//    }
 
     private void showAbout() {
         System.out.printf("This is VetCRM(tm) v%s. All Rights Reserved. Ask your questions on sakhar.medovich@gmail.com\n",
@@ -129,17 +132,17 @@ public class VetClinicManager {
         System.out.println("plug: showing inbox. Will be realized in version 1.1");
     }
 
-    private void showAllSickPets() {
-        vetClinic.showAllSickPets();
-    }
+//    private void showAllSickPets() {
+//        vetClinic.showAllSickPets();
+//    }
 
-    private void showAllPets() {
-        vetClinic.showAllPets();
-    }
+//    private void showAllPets() {
+//        vetClinic.showAllPets();
+//    }
 
     private void removePet() {
         System.out.println("Enter the petName of Pet to remove:");
         String petToRemove = userInput.getString();
-        vetClinic.removePet(petToRemove);
+//        vetClinic.removePet(petToRemove);
     }
 }

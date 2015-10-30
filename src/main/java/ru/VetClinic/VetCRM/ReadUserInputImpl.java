@@ -8,6 +8,8 @@ import java.util.Scanner;
 /**
  * This class implemented and operates with user input
  */
+
+//переименовать весь класс
 public class ReadUserInputImpl implements ReadUserInput, AutoCloseable {
     Scanner scanner = new Scanner(System.in);
 

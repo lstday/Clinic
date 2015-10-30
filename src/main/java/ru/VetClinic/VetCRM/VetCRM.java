@@ -4,6 +4,7 @@ package ru.VetClinic.VetCRM;
  * Created by lstday
  * 23.10.15.
  */
+//переименовать
 public class VetCRM {
     public static final String version = "0.03, pre-aplha";
 
