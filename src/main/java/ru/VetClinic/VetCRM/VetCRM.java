@@ -1,7 +1,5 @@
 package ru.VetClinic.VetCRM;
 
-import ru.VetClinic.VetCRM.Models.VetClinic;
-
 /**
  * Created by lstday
  * 23.10.15.

@@ -1,7 +1,5 @@
 package ru.VetClinic.VetCRM;
 
-import ru.VetClinic.VetCRM.Models.VetClinic;
-
 /**
  * Created by lstday
  * 22.10.15.
@@ -54,7 +52,7 @@ public class VetClinicManager {
 
     private void showPetsSection() {
         System.out.println("You are in the Pets Section. Here you can perform next actions:");
-        System.out.println("Press 1 to show all pets.");
+        System.out.println("Press 1 to show all pets."); //сделал
         System.out.println("Press 2 to show all sick pets.");
         System.out.println("Press 3 remove Pet");
         System.out.println("Press 0 to go back.");
@@ -83,16 +81,16 @@ public class VetClinicManager {
         System.out.println("Press 1 to show all clients.");
         System.out.println("Press 2 to add client.");
         System.out.println("Press 3 to remove client.");
-        System.out.println("Press 4 to remove pet");
+        System.out.println("Press 4 to remove pet"); //to show pets
         System.out.println("Press 0 to go back.");
         int userInputNumber = userInput.getNumber(0, 4);
         switch (userInputNumber) {
             case 1:
-//                showAllClientsNames();
-                showClientsSection();
+                //showAllClientsNames();
+                showClientsSection(); //+
                 break;
             case 2:
-                addClient();
+                addClient(); //+
                 showClientsSection();
                 break;
             case 3:

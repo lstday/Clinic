@@ -1,22 +1,23 @@
-package ru.VetClinic.VetCRM.Models;
-
-import java.util.UUID;
+package ru.VetClinic.VetCRM.models;
 
 /**
  * Created by lstday
  * 22.10.15.
  */
 
-
 public class Pet extends Animal {
-    private String uuid;
+    private String id;
     private String petName;
     private PetType petType;
     private String breed;
     private boolean isSick;
 
+    public Pet(PetType petType, String petName, String id) {
+        this.petType = petType;
+        this.petName = petName;
+        this.id = id;
+    }
 
-    //<Setters>
     public void setBreed(String breed) {
         this.breed = breed;
     }
@@ -24,23 +25,7 @@ public class Pet extends Animal {
     public void setIsSick(boolean isSick) {
         this.isSick = isSick;
     }
-    //</Setters>
 
-
-    //<Constructors>
-    public Pet(PetType petType, String petName) {
-        this(petType, petName, UUID.randomUUID().toString());
-    }
-
-    public Pet(PetType petType, String petName, String uuid) {
-        this.petType = petType;
-        this.petName = petName;
-        this.uuid = uuid;
-    }
-    //</Constructors>
-
-
-    //<Getters>
     public String getPetName() {
         return petName;
     }
@@ -57,10 +42,21 @@ public class Pet extends Animal {
         return isSick;
     }
 
-    public String getUuid() {
-        return uuid;
+    public void setId(String id) {
+        this.id = id;
     }
-    //</Getters>
+
+    public void setPetName(String petName) {
+        this.petName = petName;
+    }
+
+    public void setPetType(PetType petType) {
+        this.petType = petType;
+    }
+
+    public String getId() {
+        return id;
+    }
 }
 
 //должна быть ссылка на клиента . не понял, зачем?

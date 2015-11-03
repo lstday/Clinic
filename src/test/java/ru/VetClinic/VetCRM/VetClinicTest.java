@@ -2,8 +2,7 @@ package ru.VetClinic.VetCRM;
 
 import junit.framework.Assert;
 import org.junit.Test;
-import ru.VetClinic.VetCRM.Models.Client;
-import ru.VetClinic.VetCRM.Models.VetClinic;
+import ru.VetClinic.VetCRM.models.Client;
 
 import java.util.HashMap;
 import java.util.Map;

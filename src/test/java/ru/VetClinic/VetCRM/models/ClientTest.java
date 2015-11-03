@@ -1,7 +1,8 @@
-package ru.VetClinic.VetCRM.Models;
+package ru.VetClinic.VetCRM.models;
 
 import junit.framework.Assert;
 import org.junit.Test;
+import ru.VetClinic.VetCRM.VetClinic;
 
 /**
  * Created by lstday
@@ -13,7 +14,7 @@ public class ClientTest {
     public void testGetClientName() throws Exception {
         VetClinic vetClinic = new VetClinic("asd");
         Client client1 = new Client("clientName1");
-        Assert.assertEquals(client1.getClientName(), "clientName1");
+        Assert.assertEquals(client1.getName(), "clientName1");
     }
 
     @Test

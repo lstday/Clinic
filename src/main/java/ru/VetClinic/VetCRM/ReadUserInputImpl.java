@@ -70,4 +70,16 @@ public class ReadUserInputImpl implements ReadUserInput, AutoCloseable {
     public void close() throws Exception {
         scanner.close();
     }
+
+//    public int getNumber() {
+//        int number = Integer.MIN_VALUE;
+//        do {
+//            while (!scanner.hasNextInt()) {
+//                scanner.next();
+//            }
+//            number = scanner.nextInt();
+//        } while (number == Integer.MIN_VALUE);
+//        scanner.nextLine();
+//        return number;
+//    }
 }
