@@ -10,4 +10,5 @@ public enum PetType {
     FISH,
     CROCODILE,
     UNKNOWNMONSTER;
+
 }

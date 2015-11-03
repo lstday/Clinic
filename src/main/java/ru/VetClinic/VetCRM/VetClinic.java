@@ -4,9 +4,9 @@ import ru.VetClinic.VetCRM.models.Client;
 import ru.VetClinic.VetCRM.models.Pet;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Objects;
-import java.util.concurrent.atomic.AtomicInteger;
 
 /**
  * Created by lstday
@@ -66,19 +66,22 @@ public class VetClinic {
     }
 
     public void removeClient(String clientId) {
-        for (Client client : getClientList()) {
-            if (Objects.equals(client.getId(), clientId))
-                getClientList().remove(client);
+        Iterator<Client> iterator = clientList.iterator();
+        while (iterator.hasNext()) {
+            if (Objects.equals(iterator.next().getId(), clientId)) {
+                getClientList().remove(iterator);
+            }
         }
     }
 
     public void removePet(String petId) {
         for (Client client : getClientList()) {
-            for (Pet pet : client.getPetList()) {
-                if (Objects.equals(pet.getId(), petId))
-                    client.getPetList().remove(petId);
+            Iterator<Pet> iterator = client.getPetList().iterator();
+            while (iterator.hasNext()) {
+                if (Objects.equals(iterator.next().getId(), petId)) {
+                    getClientList().remove(iterator);
+                }
             }
-
         }
     }
 
