@@ -8,7 +8,7 @@ import java.util.concurrent.atomic.AtomicInteger;
  */
 
 public class Pet extends Animal {
-    private String id;
+    private int id;
     private String petName;
     private PetType petType;
     private String breed;
@@ -20,7 +20,7 @@ public class Pet extends Animal {
     public Pet(PetType petType, String petName) {
         this.petType = petType;
         this.petName = petName;
-        this.id = String.valueOf(petCounter.incrementAndGet());
+        this.id = petCounter.incrementAndGet();
     }
 
     public void setBreed(String breed) {
@@ -47,7 +47,7 @@ public class Pet extends Animal {
         return isSick;
     }
 
-    public void setId(String id) {
+    public void setId(int id) {
         this.id = id;
     }
 
@@ -59,7 +59,7 @@ public class Pet extends Animal {
         this.petType = petType;
     }
 
-    public String getId() {
+    public int getId() {
         return id;
     }
 }

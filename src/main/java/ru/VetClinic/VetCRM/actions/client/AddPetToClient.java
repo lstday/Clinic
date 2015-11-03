@@ -1,4 +1,4 @@
-package ru.VetClinic.VetCRM.actions.inClient;
+package ru.VetClinic.VetCRM.actions.client;
 
 import ru.VetClinic.VetCRM.ReadUserInput;
 import ru.VetClinic.VetCRM.VetAction;
@@ -23,11 +23,12 @@ public class AddPetToClient implements VetAction {
         String clientName = userInput.getString();
         //System.out.println("What type of pet?");
         //
-        String clientId = vetClinic.findByName(clientName).getId();
+        int clientId = vetClinic.findByName(clientName).getId();
         System.out.println("Enter name of pet");
         String petName = userInput.getString();
         Pet pet = new Pet(PetType.UNKNOWNMONSTER, petName); //как сделать выбор?
         vetClinic.addPet(clientId, pet);
+        System.out.printf("Pet %s to client %s was successfully added", petName, clientName);
     }
 
     @Override

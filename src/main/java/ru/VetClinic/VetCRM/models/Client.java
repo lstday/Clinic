@@ -15,15 +15,15 @@ import java.util.concurrent.atomic.AtomicInteger;
 public class Client {
     private String name; //нет смысла так называть
     private List<Pet> petList = new ArrayList<>();
-    private String id;
+    private int id;
     private static final AtomicInteger clientCounter = new AtomicInteger(0);
 
     public Client(String name) {
         this.name = name;
-        this.id = String.valueOf(clientCounter.incrementAndGet());
+        this.id = clientCounter.incrementAndGet();
     }
 
-    public void setId(String id) {
+    public void setId(int id) {
         this.id = id;
     }
 
@@ -39,7 +39,7 @@ public class Client {
         return petList;
     }
 
-    public String getId() {
+    public int getId() {
         return id;
     }
 

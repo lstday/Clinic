@@ -1,4 +1,4 @@
-package ru.VetClinic.VetCRM.actions.inClient;
+package ru.VetClinic.VetCRM.actions.client;
 
 import ru.VetClinic.VetCRM.ReadUserInput;
 import ru.VetClinic.VetCRM.VetAction;
@@ -18,7 +18,7 @@ public class RemoveClient implements VetAction {
     public void execute(ReadUserInput userInput, VetClinic vetClinic) {
         System.out.println("Enter client id to remove");
         int clientId = userInput.getNumber(0, vetClinic.getClientList().size());
-        vetClinic.removeClient(String.valueOf(clientId));
+        vetClinic.removeClient(clientId);
         System.out.printf("Client %d successfully removed!\n", clientId);
     }
 

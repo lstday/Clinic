@@ -10,7 +10,7 @@ public abstract class Animal {
     String name;
     String type;
     String breed;
-    public String id;
+    public int id;
     int color;
     int weight;
 }

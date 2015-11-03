@@ -36,7 +36,7 @@ public class VetClinic {
         return name;
     }
 
-    public void addPet(String clientId, Pet pet) {
+    public void addPet(int clientId, Pet pet) {
         Client client = findById(clientId);
         client.getPetList().add(pet);
     }
@@ -45,7 +45,7 @@ public class VetClinic {
         getClientList().add(client);
     }
 
-    public Client findById(String clientId) {
+    public Client findById(int clientId) {
         for (Client client : getClientList()) {
             if (Objects.equals(client.getId(), clientId))
                 return client;
@@ -65,21 +65,21 @@ public class VetClinic {
         return client.getPetList();
     }
 
-    public void removeClient(String clientId) {
-        Iterator<Client> iterator = clientList.iterator();
+    public void removeClient(int clientId) {
+        Iterator<Client> iterator = getClientList().iterator();
         while (iterator.hasNext()) {
-            if (Objects.equals(iterator.next().getId(), clientId)) {
-                getClientList().remove(iterator);
+            if (iterator.next().getId()==clientId) {
+                iterator.remove();
             }
         }
     }
 
-    public void removePet(String petId) {
+    public void removePet(int petId) { //TODO ТЕСТ RemovePetFromClientTest НЕ ПРОХОДИТ ИЗ_ЗА ЭТОГО
         for (Client client : getClientList()) {
             Iterator<Pet> iterator = client.getPetList().iterator();
             while (iterator.hasNext()) {
-                if (Objects.equals(iterator.next().getId(), petId)) {
-                    getClientList().remove(iterator);
+                if (iterator.next().getId()==petId) {
+                    iterator.remove();
                 }
             }
         }
