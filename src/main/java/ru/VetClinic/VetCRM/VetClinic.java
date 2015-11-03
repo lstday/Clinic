@@ -6,6 +6,7 @@ import ru.VetClinic.VetCRM.models.Pet;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
+import java.util.concurrent.atomic.AtomicInteger;
 
 /**
  * Created by lstday
@@ -19,6 +20,7 @@ import java.util.Objects;
 //тесты должны проверять 8 операций
 
 public class VetClinic {
+
     protected String name;
     private List<Client> clientList = new ArrayList<>();
 

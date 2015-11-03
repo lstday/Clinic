@@ -1,4 +1,4 @@
-package ru.VetClinic.VetCRM.actions.client;
+package ru.VetClinic.VetCRM.actions.inClient;
 
 import ru.VetClinic.VetCRM.ReadUserInput;
 import ru.VetClinic.VetCRM.VetAction;
@@ -20,9 +20,8 @@ public class ShowClientPets implements VetAction {
         System.out.println("Enter Client name to show his pets");
         String clientName = userInput.getString();
         for (Pet pet : vetClinic.findByName(clientName).getPetList()) {
-            System.out.println(pet.getId()+" "+pet.getPetType() + " " + pet.getPetName());
+            System.out.println(pet.getId() + " " + pet.getPetType() + " " + pet.getPetName());
         }
-
     }
 
     @Override

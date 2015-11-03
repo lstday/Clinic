@@ -1,4 +1,4 @@
-package ru.VetClinic.VetCRM.actions.client;
+package ru.VetClinic.VetCRM.actions.inClient;
 
 import ru.VetClinic.VetCRM.ReadUserInput;
 import ru.VetClinic.VetCRM.VetAction;

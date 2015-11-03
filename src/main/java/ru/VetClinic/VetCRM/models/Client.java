@@ -2,6 +2,7 @@ package ru.VetClinic.VetCRM.models;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.concurrent.atomic.AtomicInteger;
 
 /**
  * Created by lstday
@@ -15,9 +16,11 @@ public class Client {
     private String name; //нет смысла так называть
     private List<Pet> petList = new ArrayList<>();
     private String id;
+    private static final AtomicInteger clientCounter = new AtomicInteger(0);
 
     public Client(String name) {
         this.name = name;
+        this.id = String.valueOf(clientCounter.incrementAndGet());
     }
 
     public void setId(String id) {

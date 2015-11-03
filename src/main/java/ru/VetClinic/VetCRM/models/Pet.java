@@ -1,5 +1,7 @@
 package ru.VetClinic.VetCRM.models;
 
+import java.util.concurrent.atomic.AtomicInteger;
+
 /**
  * Created by lstday
  * 22.10.15.
@@ -12,10 +14,13 @@ public class Pet extends Animal {
     private String breed;
     private boolean isSick;
 
-    public Pet(PetType petType, String petName, String id) {
+    private static final AtomicInteger petCounter = new AtomicInteger(0);
+
+
+    public Pet(PetType petType, String petName) {
         this.petType = petType;
         this.petName = petName;
-        this.id = id;
+        this.id = String.valueOf(petCounter.incrementAndGet());
     }
 
     public void setBreed(String breed) {

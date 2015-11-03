@@ -1,11 +1,8 @@
-package ru.VetClinic.VetCRM.actions.client;
+package ru.VetClinic.VetCRM.actions.inClient;
 
 import ru.VetClinic.VetCRM.ReadUserInput;
 import ru.VetClinic.VetCRM.VetAction;
 import ru.VetClinic.VetCRM.VetClinic;
-import ru.VetClinic.VetCRM.models.Client;
-
-import java.util.Objects;
 
 /**
  * Created by lstday

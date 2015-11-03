@@ -81,7 +81,7 @@ public class VetClinicManager {
         System.out.println("Press 1 to show all clients.");
         System.out.println("Press 2 to add client.");
         System.out.println("Press 3 to remove client.");
-        System.out.println("Press 4 to remove pet"); //to show pets
+        System.out.println("Press 4 to show some client's pets"); //to show pets
         System.out.println("Press 0 to go back.");
         int userInputNumber = userInput.getNumber(0, 4);
         switch (userInputNumber) {
