@@ -1,5 +1,7 @@
 package ru.VetClinic.VetCRM.models;
 
+import ru.VetClinic.VetCRM.RandomUID;
+
 import java.util.concurrent.atomic.AtomicInteger;
 
 /**
@@ -7,8 +9,9 @@ import java.util.concurrent.atomic.AtomicInteger;
  * 22.10.15.
  */
 
-public class Pet extends Animal {
+public class Pet extends Animal { //TODO придумать уникальный id для удобного удаления
     private int id;
+    private String uid;
     private String petName;
     private PetType petType;
     private String breed;
@@ -21,14 +24,19 @@ public class Pet extends Animal {
         this.petType = petType;
         this.petName = petName;
         this.id = petCounter.incrementAndGet();
+        this.uid = RandomUID.getInstance().uidRandomizer();
+    }
+
+    public String getUid() {
+        return uid;
     }
 
     public void setBreed(String breed) {
         this.breed = breed;
     }
 
-    public void setIsSick(boolean isSick) {
-        this.isSick = isSick;
+    public void setSick(boolean state) {
+        this.isSick = state;
     }
 
     public String getPetName() {

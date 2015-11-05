@@ -9,6 +9,8 @@ import ru.VetClinic.VetCRM.models.Client;
 import ru.VetClinic.VetCRM.models.Pet;
 import ru.VetClinic.VetCRM.models.PetType;
 
+import java.util.Iterator;
+
 /**
  * Created by lstday
  * 03.11.15.

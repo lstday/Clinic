@@ -20,17 +20,22 @@ public class RemovePetFromClient implements VetAction {
     public void execute(ReadUserInput userInput, VetClinic vetClinic) {
         System.out.println("Enter Client name to show his pets");
         String clientName = userInput.getString();
+        System.out.printf("Here pets of client %s:\n", clientName);
         for (Pet pet : vetClinic.findByName(clientName).getPetList()) {
             System.out.println(pet.getId() + " " + pet.getPetType() + " " + pet.getPetName());
         }
 
         Client client = vetClinic.findByName(clientName);
 
-        System.out.println("Enter Pet name remove");
+        System.out.println("Enter Pet name to remove");
         String petName = userInput.getString();
-        for (Pet pet : vetClinic.getClientPets(client)) {
+
+        for (Pet pet : vetClinic.getClientPets(client)) { //TODO bad, get iterator.
             if (pet.getPetName().equals(petName))
-                vetClinic.removePet(pet.getId());
+            {
+                vetClinic.removePet(pet.getUid());
+                break;
+            }
         }
     }
 

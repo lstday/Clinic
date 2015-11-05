@@ -74,16 +74,26 @@ public class VetClinic {
         }
     }
 
-    public void removePet(int petId) { //TODO ТЕСТ RemovePetFromClientTest НЕ ПРОХОДИТ ИЗ_ЗА ЭТОГО
+    public void removePet(String petUID) {
         for (Client client : getClientList()) {
             Iterator<Pet> iterator = client.getPetList().iterator();
             while (iterator.hasNext()) {
-                if (iterator.next().getId()==petId) {
+                if (Objects.equals(iterator.next().getUid(), petUID)) {
                     iterator.remove();
                 }
             }
         }
     }
+//public void removePet(int petId) {
+//        for (Client client : getClientList()) {
+//            Iterator<Pet> iterator = client.getPetList().iterator();
+//            while (iterator.hasNext()) {
+//                if (iterator.next().getId()==petId) {
+//                    iterator.remove();
+//                }
+//            }
+//        }
+//    }
 
 
 }

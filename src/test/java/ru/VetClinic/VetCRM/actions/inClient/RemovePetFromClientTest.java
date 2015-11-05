@@ -1,5 +1,6 @@
 package ru.VetClinic.VetCRM.actions.inClient;
 
+import junit.framework.Assert;
 import org.junit.Test;
 import ru.VetClinic.VetCRM.ReadUserInput;
 import ru.VetClinic.VetCRM.VetClinic;
@@ -7,6 +8,11 @@ import ru.VetClinic.VetCRM.actions.client.RemovePetFromClient;
 import ru.VetClinic.VetCRM.models.Client;
 import ru.VetClinic.VetCRM.models.Pet;
 import ru.VetClinic.VetCRM.models.PetType;
+
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Iterator;
+import java.util.List;
 
 /**
  * Created by lstday
@@ -17,15 +23,23 @@ public class RemovePetFromClientTest {
     @Test
     public void testExecute() throws Exception {
         VetClinic vetClinic = new VetClinic("asd");
+
         RemovePetFromClient removePetFromClient = new RemovePetFromClient();
-        Client client1 = new Client("cat");
-        Client client2 = new Client("dog");
+
+        Client client1 = new Client("client");
         vetClinic.addClient(client1);
-        vetClinic.addClient(client2);
         Pet pet1 = new Pet(PetType.CAT, "cat");
         Pet pet2 = new Pet(PetType.DOG, "dog");
         vetClinic.addPet(client1.getId(), pet1);
-        vetClinic.addPet(client2.getId(), pet2);
+        vetClinic.addPet(client1.getId(), pet2);
+
+//        ArrayList<String> arrayList = new ArrayList<>();
+//        arrayList.add("client");
+//        arrayList.add("cat");
+//
+//        final Iterator<String> iterator = arrayList.iterator();
+        final Iterator<String> answer = Arrays.asList("client", "cat").iterator();
+
         ReadUserInput userInput = new ReadUserInput() {
             @Override
             public char getAnswer() {
@@ -34,7 +48,8 @@ public class RemovePetFromClientTest {
 
             @Override
             public String getString() {
-                return "cat";
+                return answer.next();
+//                return iterator.next();
             }
 
             @Override
@@ -44,7 +59,8 @@ public class RemovePetFromClientTest {
         };
 
         removePetFromClient.execute(userInput, vetClinic);
-        System.out.println(vetClinic.getClientPets(client1).iterator().next().getPetName());
+        Assert.assertFalse(vetClinic.getClientPets(client1).contains(pet1));
+        Assert.assertTrue(vetClinic.getClientPets(client1).contains(pet2));
 
     }
 
