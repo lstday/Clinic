@@ -23,14 +23,14 @@ public class VetClinic {
 
     protected String name;
     private List<Client> clientList = new ArrayList<>();
+
     private List<VetAction> clientActions = new ArrayList<>();
     private List<VetAction> petActions = new ArrayList<>();
+    private List<VetAction> menuActions = new ArrayList<>();
 
     public List<VetAction> getMenuActions() {
         return menuActions;
     }
-
-    private List<VetAction> menuActions = new ArrayList<>();
 
     public List<VetAction> getClientActions() {
         return clientActions;
@@ -41,15 +41,18 @@ public class VetClinic {
     }
 
     public void loadPetAction(VetAction action) {
-        clientActions.add(action.key(), action);
+//        clientActions.add(action.key(), action);
+        petActions.add(action);
     }
 
     public void loadClientAction(VetAction action) {
-        clientActions.add(action.key(), action);
+//        clientActions.add(action.key(), action);
+        clientActions.add(action);
     }
 
     public void loadMenuAction(VetAction action) {
-        menuActions.add(action.key(), action);
+//        menuActions.add(action.key(), action);
+        menuActions.add(action);
     }
 
 

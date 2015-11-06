@@ -6,7 +6,7 @@ package ru.VetClinic.VetCRM;
  */
 //переименовать
 public class VetCRM {
-    public static final String version = "0.05, pre-aplha";
+    public static final String version = "0.07, pre-aplha";
 
     /**
      * Put here your clinic with petName. Name will be used.

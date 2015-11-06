@@ -26,21 +26,23 @@ public class VetClinicManager {
     }
 
     public void fillActions() {
-        vetClinic.loadClientAction(new AddClient());
-        vetClinic.loadClientAction(new AddPetToClient());
-        vetClinic.loadClientAction(new RemovePetFromClient());
-        vetClinic.loadClientAction(new RemoveClient());
-        vetClinic.loadClientAction(new ShowAllClients());
-        vetClinic.loadClientAction(new ShowPetsOfClient());
-
-        vetClinic.loadPetAction(new HealthSwitcher());
-        vetClinic.loadPetAction(new RemovePet());
-        vetClinic.loadPetAction(new ShowAllPets());
-        vetClinic.loadPetAction(new ShowAllSickPets());
-
         vetClinic.loadMenuAction(new ShowClientSection());
         vetClinic.loadMenuAction(new ShowPetSection());
         vetClinic.loadMenuAction(new ShowAbout());
+
+        vetClinic.loadClientAction(new ShowAllClients());
+        vetClinic.loadClientAction(new AddClient());
+        vetClinic.loadClientAction(new RemoveClient());
+        vetClinic.loadClientAction(new ShowPetsOfClient());
+        vetClinic.loadClientAction(new RemovePetFromClient());
+        vetClinic.loadClientAction(new AddPetToClient());
+        vetClinic.loadClientAction(new GoBack());
+
+        vetClinic.loadPetAction(new ShowAllPets());
+        vetClinic.loadPetAction(new ShowAllSickPets());
+        vetClinic.loadPetAction(new RemovePet());
+        vetClinic.loadPetAction(new HealthSwitcher());
+        vetClinic.loadPetAction(new GoBack());
     }
 
     public void runVetClinic() {
@@ -49,122 +51,104 @@ public class VetClinicManager {
         showMainMenu();
     }
 
-
     protected void showMainMenu() {
-        System.out.println("You are in the Main menu. Here you can perform next actions:");
-        System.out.println("Press 1 to move in Clients section.");
-        System.out.println("Press 2 to move in Pets section.");
-        System.out.println("Press 3 to see inbox messages.");
-        System.out.println("Press 4 to show About.");
-        System.out.println("Press 0 to Exit.");
-        int userInputNumber = userInput.getNumber(0, 4);
-        switch (userInputNumber) {
-            case 1:
-                showClientsSection();
-                break;
-            case 2:
-                showPetsSection();
-                break;
-            case 3:
-                showInbox();
-                showMainMenu();
-                break;
-            case 4:
-                showAbout();
-                showMainMenu();
-                break;
-            case 0:
-                break;
+        for (VetAction vetAction : vetClinic.getMenuActions()) {
+            System.out.println(vetAction.info());
         }
+
+        int userInputNumber = userInput.getNumber(0, vetClinic.getMenuActions().size());
+
+        for (VetAction vetAction : vetClinic.getMenuActions()) {
+            if (userInputNumber==vetAction.key()) {
+                vetAction.execute(userInput, vetClinic);
+            }
+        }
+
     }
 
     private void showPetsSection() {
         for (VetAction vetAction : vetClinic.getPetActions()) {
             System.out.println(vetAction.info());
         }
-        System.out.println("Press 0 to go back.");
+        int userInputNumber = userInput.getNumber(0, vetClinic.getPetActions().size());
 
-
-        System.out.println("You are in the Pets Section. Here you can perform next actions:");
-        System.out.println("Press 1 to show all pets."); //сделал
-        System.out.println("Press 2 to show all sick pets.");
-        System.out.println("Press 3 remove Pet");
-
-        int userInputNumber = userInput.getNumber(0, 3);
-        switch (userInputNumber) {
-            case 1:
-//                showAllPets();
-                showPetsSection();
-                break;
-            case 2:
-//                showAllSickPets();
-                showPetsSection();
-                break;
-            case 3:
-//                removePet();
-                showMainMenu();
-                break;
-            case 0:
-                showMainMenu();
-                break;
-        }
     }
 
     private void showClientsSection() {
-        System.out.println("You are in the Clients Section. Here you can perform next actions:");
-        System.out.println("Press 1 to show all clients.");
-        System.out.println("Press 2 to add client.");
-        System.out.println("Press 3 to remove client.");
-        System.out.println("Press 4 to show some client's pets"); //to show pets
-        System.out.println("Press 0 to go back.");
-        int userInputNumber = userInput.getNumber(0, 4);
-        switch (userInputNumber) {
-            case 1:
-                //showAllClientsNames();
-                showClientsSection(); //+
-                break;
-            case 2:
-                addClient(); //+
-                showClientsSection();
-                break;
-            case 3:
-                removeClient();
-                showClientsSection();
-                break;
-            case 4:
-                removePet();
-                showClientsSection();
-                break;
-            case 0:
-                showMainMenu();
-                break;
+        for (VetAction vetAction : vetClinic.getClientActions()) {
+            System.out.println(vetAction.info());
         }
-    }
+        int userInputNumber = userInput.getNumber(0, vetClinic.getClientActions().size());
+        for (VetAction vetAction : vetClinic.getClientActions()) {
+            if (userInputNumber==vetAction.key()) {
+                vetAction.execute(userInput, vetClinic);
+            }
+        }
 
-    private void addClient() {
-        System.out.println("Enter petName:");
-        String newClientName = userInput.getString();
-//        vetClinic.addClient(newClientName); //TODO написано, протестировать
     }
+}
 
-    private void removeClient() {
-        System.out.println("Enter the petName of Client to remove:");
-        String clientToRemove = userInput.getString();
-//        vetClinic.removeClient(clientToRemove);
-    }
+//        switch (userInputNumber) {
+//            case 1:
+//                showClientsSection();
+//                break;
+//            case 2:
+//                showPetsSection();
+//                break;
+//            case 3:
+//                showInbox();
+//                showMainMenu();
+//                break;
+//            case 4:
+//                showAbout();
+//                showMainMenu();
+//                break;
+//            case 0:
+//                break;
+//        }
+//        switch (userInputNumber) {
+//            case 1:
+//                showClientsSection();
+//                break;
+//            case 2:
+//                showPetsSection();
+//                break;
+//            case 3:
+//                showInbox();
+//                showMainMenu();
+//                break;
+//            case 4:
+//                showAbout();
+//                showMainMenu();
+//                break;
+//            case 0:
+//                break;
+//        }
 
-//    private void showAllClientsNames() {
-//        vetClinic.showAllClientsNames();
+//    private void addClient() {
+//        System.out.println("Enter petName:");
+//        String newClientName = userInput.getString();
+////        vetClinic.addClient(newClientName); //TODO написано, протестировать
 //    }
-
-    private void showAbout() {
-        System.out.printf("This is VetCRM(tm) v%s. All Rights Reserved. Ask your questions on sakhar.medovich@gmail.com\n",
-                VetCRM.version);
-    }
-
-    private void showInbox() {
-        System.out.println("plug: showing inbox. Will be realized in version 1.1");
-    }
+//
+//    private void removeClient() {
+//        System.out.println("Enter the petName of Client to remove:");
+//        String clientToRemove = userInput.getString();
+////        vetClinic.removeClient(clientToRemove);
+//    }
+//
+////    private void showAllClientsNames() {
+////        vetClinic.showAllClientsNames();
+////    }
+//
+//    private void showAbout() {
+//        System.out.printf("This is VetCRM(tm) v%s. All Rights Reserved. Ask your questions on sakhar.medovich@gmail.com\n",
+//                VetCRM.version);
+//    }
+//
+//    private void showInbox() {
+//        System.out.println("plug: showing inbox. Will be realized in version 1.1");
+//    }
 
 //    private void showAllSickPets() {
 //        vetClinic.showAllSickPets();
@@ -174,9 +158,30 @@ public class VetClinicManager {
 //        vetClinic.showAllPets();
 //    }
 
-    private void removePet() {
-        System.out.println("Enter the petName of Pet to remove:");
-        String petToRemove = userInput.getString();
-//        vetClinic.removePet(petToRemove);
-    }
-}
+//    private void removePet() {
+//        System.out.println("Enter the petName of Pet to remove:");
+//        String petToRemove = userInput.getString();
+////        vetClinic.removePet(petToRemove);
+//    }
+
+//        switch (userInputNumber) {
+//            case 1:
+//                //showAllClientsNames();
+//                showClientsSection(); //+
+//                break;
+//            case 2:
+//                addClient(); //+
+//                showClientsSection();
+//                break;
+//            case 3:
+//                removeClient();
+//                showClientsSection();
+//                break;
+//            case 4:
+//                removePet();
+//                showClientsSection();
+//                break;
+//            case 0:
+//                showMainMenu();
+//                break;
+//        }
