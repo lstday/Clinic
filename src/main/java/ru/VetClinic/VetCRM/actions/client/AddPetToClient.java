@@ -3,7 +3,6 @@ package ru.VetClinic.VetCRM.actions.client;
 import ru.VetClinic.VetCRM.ReadUserInput;
 import ru.VetClinic.VetCRM.VetAction;
 import ru.VetClinic.VetCRM.VetClinic;
-import ru.VetClinic.VetCRM.models.Client;
 import ru.VetClinic.VetCRM.models.Pet;
 import ru.VetClinic.VetCRM.models.PetType;
 
@@ -23,7 +22,7 @@ public class AddPetToClient implements VetAction {
         String clientName = userInput.getString();
         //System.out.println("What type of pet?");
         //
-        int clientId = vetClinic.findByName(clientName).getId();
+        int clientId = vetClinic.findClientByName(clientName).getId();
         System.out.println("Enter name of pet");
         String petName = userInput.getString();
         Pet pet = new Pet(PetType.UNKNOWNMONSTER, petName); //как сделать выбор?

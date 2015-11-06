@@ -19,7 +19,7 @@ public class ShowPetsOfClient implements VetAction {
     public void execute(ReadUserInput userInput, VetClinic vetClinic) {
         System.out.println("Enter Client name to show his pets");
         String clientName = userInput.getString();
-        for (Pet pet : vetClinic.findByName(clientName).getPetList()) {
+        for (Pet pet : vetClinic.findClientByName(clientName).getPetList()) {
             System.out.println(pet.getId() + " " + pet.getPetType() + " " + pet.getPetName());
         }
     }

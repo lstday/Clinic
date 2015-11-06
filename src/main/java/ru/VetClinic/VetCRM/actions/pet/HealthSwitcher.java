@@ -1,4 +1,4 @@
-package ru.VetClinic.VetCRM.actions.client;
+package ru.VetClinic.VetCRM.actions.pet;
 
 import ru.VetClinic.VetCRM.ReadUserInput;
 import ru.VetClinic.VetCRM.VetAction;
@@ -6,41 +6,44 @@ import ru.VetClinic.VetCRM.VetClinic;
 import ru.VetClinic.VetCRM.models.Client;
 import ru.VetClinic.VetCRM.models.Pet;
 
+import java.util.Objects;
+
 /**
  * Created by lstday
- * 03.11.15.
+ * 06.11.15.
  */
-public class RemovePetFromClient implements VetAction {
+public class HealthSwitcher implements VetAction {
     @Override
     public int key() {
-        return 5;
+        return 4;
     }
 
     @Override
     public void execute(ReadUserInput userInput, VetClinic vetClinic) {
-        System.out.println("Enter Client name to show his pets");
+        System.out.println("Enter Client name");
         String clientName = userInput.getString();
         System.out.printf("Here pets of client %s:\n", clientName);
         for (Pet pet : vetClinic.findClientByName(clientName).getPetList()) {
-            System.out.println(pet.getId() + " " + pet.getPetType() + " " + pet.getPetName());
+            System.out.println("id:"+pet.getId() + " type:" + pet.getPetType() + " name:" + pet.getPetName());
         }
-
         Client client = vetClinic.findClientByName(clientName);
 
-        System.out.println("Enter Pet name to remove");
+        System.out.println("Enter Pet name to switch health status");
         String petName = userInput.getString();
 
-        for (Pet pet : vetClinic.getClientPets(client)) { //TODO bad, get iterator.
-            if (pet.getPetName().equals(petName))
-            {
-                vetClinic.removePet(pet.getUid());
-                break;
-            }
-        }
+        Pet pet = vetClinic.findPetByName(client, petName);
+        pet.switchHealth();
+
+//        for (Pet pet : client.getPetList()) {
+//            if (Objects.equals(pet.getPetName(), petName)) {
+//                pet.switchHealth();
+//            }
+//        }
+
     }
 
     @Override
     public String info() {
-        return "Press 5 to remove Clients pet";
+        return "Press 4 for switch health state of pet";
     }
 }

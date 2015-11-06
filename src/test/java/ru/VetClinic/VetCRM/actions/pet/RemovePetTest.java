@@ -1,5 +1,6 @@
 package ru.VetClinic.VetCRM.actions.pet;
 
+import junit.framework.Assert;
 import org.junit.Test;
 import ru.VetClinic.VetCRM.ReadUserInput;
 import ru.VetClinic.VetCRM.VetClinic;
@@ -12,15 +13,25 @@ import java.util.Iterator;
 
 /**
  * Created by lstday
- * 05.11.15.
+ * 06.11.15.
  */
-public class ShowAllSickPetsTest { //TODO how to test this?
+public class RemovePetTest {
 
     @Test
     public void testExecute() throws Exception {
-        ShowAllSickPets allSickPets = new ShowAllSickPets();
-        VetClinic vetClinic = new VetClinic("asd");
+        RemovePet removePet = new RemovePet();
 
+
+        VetClinic vetClinic = new VetClinic("asd");
+        Client client = new Client("client");
+        vetClinic.addClient(client);
+
+        Pet pet1 = new Pet(PetType.CAT, "cat");
+        Pet pet2 = new Pet(PetType.DOG, "dog");
+        vetClinic.addPet(client.getId(), pet1);
+        vetClinic.addPet(client.getId(), pet2);
+
+        final Iterator<String> answer = Arrays.asList(vetClinic.findPetByName(client, "cat").getUid()).iterator();
 
         ReadUserInput userInput = new ReadUserInput() {
             @Override
@@ -30,7 +41,7 @@ public class ShowAllSickPetsTest { //TODO how to test this?
 
             @Override
             public String getString() {
-                return null;
+                return answer.next();
             }
 
             @Override
@@ -38,23 +49,9 @@ public class ShowAllSickPetsTest { //TODO how to test this?
                 return 0;
             }
         };
+        removePet.execute(userInput, vetClinic);
 
-        Client client1 = new Client("client1");
-        Client client2 = new Client("client2");
-        vetClinic.addClient(client1);
-        vetClinic.addClient(client2);
-        Pet pet1 = new Pet(PetType.CAT, "cat");
-        Pet pet2 = new Pet(PetType.DOG, "dog");
-        Pet pet3 = new Pet(PetType.CROCODILE, "croco");
-        Pet pet4 = new Pet(PetType.FISH, "fish");
-        vetClinic.addPet(client1.getId(), pet1);
-        vetClinic.addPet(client1.getId(), pet2);
-        vetClinic.addPet(client2.getId(), pet3);
-        vetClinic.addPet(client2.getId(), pet4);
-
-        pet1.switchHealth();
-        pet4.switchHealth();
-
-        allSickPets.execute(userInput, vetClinic);
+        Assert.assertFalse(client.getPetList().contains(pet1));
+        Assert.assertTrue(client.getPetList().contains(pet2));
     }
 }

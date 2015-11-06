@@ -37,7 +37,7 @@ public class VetClinic {
     }
 
     public void addPet(int clientId, Pet pet) {
-        Client client = findById(clientId);
+        Client client = findClientById(clientId);
         client.getPetList().add(pet);
     }
 
@@ -45,7 +45,7 @@ public class VetClinic {
         getClientList().add(client);
     }
 
-    public Client findById(int clientId) {
+    public Client findClientById(int clientId) {
         for (Client client : getClientList()) {
             if (Objects.equals(client.getId(), clientId))
                 return client;
@@ -53,12 +53,33 @@ public class VetClinic {
         return null;
     }
 
-    public Client findByName(String clientName) {
+    public Client findClientByName(String clientName) {
         for (Client client : getClientList()) {
             if (Objects.equals(client.getName(), clientName))
                 return client;
         }
         return null;
+    }
+
+    public Pet findPetByName(Client client, String petName) {
+        Pet pet = null;
+        for (Pet petTemp : client.getPetList()) {
+            if (Objects.equals(petTemp.getPetName(), petName)) {
+                pet = petTemp;
+            }
+        }
+        return pet;
+    }
+
+    public Pet findPetByUID(String uid) {
+        Pet pet = null;
+        for (Client clientTemp : clientList) {
+            for (Pet petTemp : clientTemp.getPetList()) {
+                if (Objects.equals(petTemp.getUid(), uid))
+                    pet = petTemp;
+            }
+        }
+        return pet;
     }
 
     public List<Pet> getClientPets(Client client) {
@@ -68,7 +89,7 @@ public class VetClinic {
     public void removeClient(int clientId) {
         Iterator<Client> iterator = getClientList().iterator();
         while (iterator.hasNext()) {
-            if (iterator.next().getId()==clientId) {
+            if (iterator.next().getId() == clientId) {
                 iterator.remove();
             }
         }

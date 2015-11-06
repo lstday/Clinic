@@ -35,8 +35,8 @@ public class Pet extends Animal { //TODO придумать уникальный
         this.breed = breed;
     }
 
-    public void setSick(boolean state) {
-        this.isSick = state;
+    public void switchHealth() {
+        this.isSick = !isSick;
     }
 
     public String getPetName() {
