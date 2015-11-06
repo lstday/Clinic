@@ -26,6 +26,6 @@ public class RemovePet implements VetAction { //TODO make inner UID
 
     @Override
     public String info() {
-        return "Press 3 to remove pet";
+        return String.format("Press %d to remove pet", key());
     }
 }

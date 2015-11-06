@@ -31,6 +31,6 @@ public class ShowAllSickPets implements VetAction {
 
     @Override
     public String info() {
-        return null;
+        return String.format("Press %d to show all sick pets", key());
     }
 }

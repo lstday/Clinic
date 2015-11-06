@@ -44,6 +44,6 @@ public class HealthSwitcher implements VetAction {
 
     @Override
     public String info() {
-        return "Press 4 for switch health state of pet";
+        return String.format("Press %d for switch health state of pet", key());
     }
 }

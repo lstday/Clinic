@@ -24,6 +24,6 @@ public class RemoveClient implements VetAction {
 
     @Override
     public String info() {
-        return "Press 3 to remove client.";
+        return String .format("Press %d to remove client.", key());
     }
 }

@@ -1,5 +1,11 @@
 package ru.VetClinic.VetCRM;
 
+import ru.VetClinic.VetCRM.actions.client.*;
+import ru.VetClinic.VetCRM.actions.pet.HealthSwitcher;
+import ru.VetClinic.VetCRM.actions.pet.RemovePet;
+import ru.VetClinic.VetCRM.actions.pet.ShowAllPets;
+import ru.VetClinic.VetCRM.actions.pet.ShowAllSickPets;
+
 /**
  * Created by lstday
  * 22.10.15.
@@ -16,8 +22,23 @@ public class VetClinicManager {
         this.vetClinic = vetClinic;
     }
 
+    public void fillActions() {
+        vetClinic.loadClientAction(new AddClient());
+        vetClinic.loadClientAction(new AddPetToClient());
+        vetClinic.loadClientAction(new RemovePetFromClient());
+        vetClinic.loadClientAction(new RemoveClient());
+        vetClinic.loadClientAction(new ShowAllClients());
+        vetClinic.loadClientAction(new ShowPetsOfClient());
+
+        vetClinic.loadPetAction(new HealthSwitcher());
+        vetClinic.loadPetAction(new RemovePet());
+        vetClinic.loadPetAction(new ShowAllPets());
+        vetClinic.loadPetAction(new ShowAllSickPets());
+    }
+
     public void runVetClinic() {
         System.out.printf("Hello in our Vet Clinic %s, dear Director!\nWant a little work?\n", vetClinic.getName());
+        fillActions();
         showMainMenu();
     }
 
@@ -51,11 +72,17 @@ public class VetClinicManager {
     }
 
     private void showPetsSection() {
+        for (VetAction vetAction : vetClinic.getPetActions()) {
+            System.out.println(vetAction.info());
+        }
+        System.out.println("Press 0 to go back.");
+
+
         System.out.println("You are in the Pets Section. Here you can perform next actions:");
         System.out.println("Press 1 to show all pets."); //сделал
         System.out.println("Press 2 to show all sick pets.");
         System.out.println("Press 3 remove Pet");
-        System.out.println("Press 0 to go back.");
+
         int userInputNumber = userInput.getNumber(0, 3);
         switch (userInputNumber) {
             case 1:

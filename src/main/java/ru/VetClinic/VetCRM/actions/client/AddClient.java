@@ -26,6 +26,6 @@ public class AddClient implements VetAction {
 
     @Override
     public String info() {
-        return "Press 2 to add client.";
+        return String.format("Press %d to add client", key());
     }
 }

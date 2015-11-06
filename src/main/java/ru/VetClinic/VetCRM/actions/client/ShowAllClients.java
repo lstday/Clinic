@@ -25,6 +25,6 @@ public class ShowAllClients implements VetAction {
 
     @Override
     public String info() {
-        return "Press 1 to show all clients.";
+        return String.format("Press %d to show all clients.", key());
     }
 }

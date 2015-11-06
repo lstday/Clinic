@@ -8,22 +8,22 @@ public interface VetAction {
     /**
      * key of operation
      *
-     * @return
+     * @returns key of operation
      */
     int key();
 
     /**
-     * Realize some actions
+     * Realize some actions whith pet or client
      *
-     * @param userInput
-     * @param vetClinic
+     * @param userInput - read from console with validator: string, int or y/n
+     * @param vetClinic - instance of vetclinic
      */
     void execute(ReadUserInput userInput, VetClinic vetClinic);
 
     /**
      * Action information
      *
-     * @return
+     * @return string whith info about action
      */
     String info();
 }

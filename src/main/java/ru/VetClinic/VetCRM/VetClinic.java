@@ -23,6 +23,25 @@ public class VetClinic {
 
     protected String name;
     private List<Client> clientList = new ArrayList<>();
+    private List<VetAction> clientActions = new ArrayList<>();
+    private List<VetAction> petActions = new ArrayList<>();
+
+    public List<VetAction> getClientActions() {
+        return clientActions;
+    }
+
+    public List<VetAction> getPetActions() {
+        return petActions;
+    }
+
+    public void loadPetAction(VetAction action) {
+        clientActions.add(action.key(), action);
+    }
+
+    public void loadClientAction(VetAction action) {
+        clientActions.add(action.key(), action);
+    }
+
 
     public VetClinic(String name) {
         this.name = name;
@@ -105,6 +124,8 @@ public class VetClinic {
             }
         }
     }
+
+
 //public void removePet(int petId) {
 //        for (Client client : getClientList()) {
 //            Iterator<Pet> iterator = client.getPetList().iterator();

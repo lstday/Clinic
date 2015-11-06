@@ -29,6 +29,6 @@ public class ShowAllPets implements VetAction {
 
     @Override
     public String info() {
-        return "Press 1 to show all pets";
+        return String.format("Press %d to show all pets", key());
     }
 }

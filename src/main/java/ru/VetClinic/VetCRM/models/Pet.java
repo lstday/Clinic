@@ -19,7 +19,6 @@ public class Pet extends Animal { //TODO придумать уникальный
 
     private static final AtomicInteger petCounter = new AtomicInteger(0);
 
-
     public Pet(PetType petType, String petName) {
         this.petType = petType;
         this.petName = petName;
@@ -47,16 +46,16 @@ public class Pet extends Animal { //TODO придумать уникальный
         return petType;
     }
 
-    public String getBreed() {
-        return breed;
-    }
-
     public boolean isSick() {
         return isSick;
     }
 
     public void setId(int id) {
         this.id = id;
+    }
+
+    public String getBreed() {
+        return breed;
     }
 
     public void setPetName(String petName) {
@@ -71,5 +70,3 @@ public class Pet extends Animal { //TODO придумать уникальный
         return id;
     }
 }
-
-//должна быть ссылка на клиента . не понял, зачем?

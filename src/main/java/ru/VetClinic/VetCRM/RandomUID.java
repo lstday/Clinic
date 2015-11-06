@@ -5,6 +5,7 @@ package ru.VetClinic.VetCRM;
  * 05.11.15.
  */
 public class RandomUID {
+
     private String chars = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
 
     public String uidRandomizer() {

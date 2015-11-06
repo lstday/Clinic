@@ -14,4 +14,3 @@ public abstract class Animal {
     int color;
     int weight;
 }
-//сделать айди +

@@ -41,6 +41,6 @@ public class RemovePetFromClient implements VetAction {
 
     @Override
     public String info() {
-        return "Press 5 to remove Clients pet";
+        return String.format("Press %d to remove Clients pet", key());
     }
 }

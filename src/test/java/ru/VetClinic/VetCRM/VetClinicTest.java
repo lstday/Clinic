@@ -1,82 +1,103 @@
-//package ru.VetClinic.VetCRM;
-//
-//import junit.framework.Assert;
-//import org.junit.Test;
-//import ru.VetClinic.VetCRM.models.Client;
-//
-//import java.util.HashMap;
-//import java.util.Map;
-//import java.util.concurrent.atomic.AtomicInteger;
-//
-///**
-// * Created by lstday
-// * 30.10.15.
-// */
-//public class VetClinicTest {
-//
-//
-//    @Test
-//    public void testRemoveClient() throws Exception {
-////        Pet pet1 = new Pet(PetType.CAT, "cat");
-////        Pet pet2 = new Pet(PetType.CROCODILE, "crocodile");
-////        Pet pet3 = new Pet(PetType.DOG, "dog");
-////        client1.addPet(pet1);
-////        client1.addPet(pet2);
-////        client2.addPet(pet3);
-////        Map<Integer, Client> clientHashMap = new HashMap<>();
-////        clientHashMap.put(clientCount.incrementAndGet(), client1);
-////        clientHashMap.put(clientCount.incrementAndGet(), client2);
-////        final AtomicInteger clientCount = new AtomicInteger(0);
-////        vetClinic.removeClient(client2);
-////        Assert.assertTrue(vetClinic.isPresent(client2));
-//
-//        VetClinic vetClinic = new VetClinic("asd");
-//        Client client1 = new Client("clientName1");
-//        Client client2 = new Client("clientName2");
-//        vetClinic.addClient(client1);
-//        vetClinic.addClient(client2);
-//        vetClinic.removeClient(client1);
-//        Assert.assertFalse(vetClinic.getClientList().containsValue(client1));
-//        Assert.assertTrue(vetClinic.getClientList().containsValue(client2));
-//    }
-//
-//    @Test
-//    public void testAddClient() throws Exception {
-//
-////        Pet pet1 = new Pet(PetType.CAT, "cat");
-////        Pet pet2 = new Pet(PetType.CROCODILE, "crocodile");
-////        Pet pet3 = new Pet(PetType.DOG, "dog");
-////        client1.addPet(pet1);
-////        client1.addPet(pet2);
-////        client2.addPet(pet3);
-//
-//        final AtomicInteger clientCount = new AtomicInteger(0);
-//        VetClinic vetClinic = new VetClinic("asd");
-//
-//        Client client1 = new Client("clientName1");
-//        Client client2 = new Client("clientName2");
-//        Map<Integer, Client> clientHashMap = new HashMap<>();
-//
-//        clientHashMap.put(clientCount.incrementAndGet(), client1);
-//        clientHashMap.put(clientCount.incrementAndGet(), client2);
-//
-//        Assert.assertTrue(clientHashMap.containsValue(client2));
-//
-//    }
-//
-//    @Test
-//    public void testIsPresent() throws Exception {
-//        final AtomicInteger clientCount = new AtomicInteger(0);
-//        VetClinic vetClinic = new VetClinic("asd");
-//
-//        Client client1 = new Client("clientName1");
-//        Client client2 = new Client("clientName2");
-////        Map<Integer, Client> clientHashMap = new HashMap<>();
-////        clientHashMap.put(clientCount.incrementAndGet(), client1);
-////        clientHashMap.put(clientCount.incrementAndGet(), client2);
-//        vetClinic.addClient(client2);
-//        Assert.assertFalse(vetClinic.isPresent(client1));
-//        Assert.assertTrue(vetClinic.isPresent(client2));
-//
-//    }
-//}
+package ru.VetClinic.VetCRM;
+
+import junit.framework.Assert;
+import org.junit.Before;
+import org.junit.Test;
+import ru.VetClinic.VetCRM.models.Client;
+import ru.VetClinic.VetCRM.models.Pet;
+import ru.VetClinic.VetCRM.models.PetType;
+
+import static org.junit.Assert.*;
+
+/**
+ * Created by lstday
+ * 06.11.15.
+ */
+public class VetClinicTest {
+    VetClinic vetClinic = new VetClinic("asd");
+
+    @Before
+    public void dropAll() throws Exception {
+        vetClinic =  new VetClinic(RandomUID.getInstance().uidRandomizer());
+    }
+
+    @Test
+    public void testGetClientActions() throws Exception {
+
+    }
+
+    @Test
+    public void testGetPetActions() throws Exception {
+
+    }
+
+    @Test
+    public void testLoadPetAction() throws Exception {
+
+    }
+
+    @Test
+    public void testLoadClientAction() throws Exception {
+
+    }
+
+    @Test
+    public void testGetClientList() throws Exception {
+
+    }
+
+    @Test
+    public void testAddPet() throws Exception {
+        Client client = new Client("client");
+        Pet pet = new Pet(PetType.CAT, "cat");
+        Pet pet2 = new Pet(PetType.CAT, "cat");
+        vetClinic.addClient(client);
+        vetClinic.addPet(client.getId(), pet);
+        Assert.assertTrue(vetClinic.getClientList().iterator().next().getPetList().iterator().next().equals(pet));
+        Assert.assertFalse(vetClinic.getClientList().iterator().next().getPetList().iterator().next().equals(pet2));
+    }
+
+    @Test
+    public void testAddClient() throws Exception {
+        Client client = new Client("client");
+        vetClinic.addClient(client);
+        Assert.assertTrue(vetClinic.getClientList().contains(client));
+    }
+
+    @Test
+    public void testFindClientById() throws Exception {
+        Client client = new Client("client");
+        vetClinic.addClient(client);
+        Assert.assertEquals(vetClinic.findClientById(client.getId()), client);
+    }
+
+    @Test
+    public void testFindClientByName() throws Exception {
+
+    }
+
+    @Test
+    public void testFindPetByName() throws Exception {
+
+    }
+
+    @Test
+    public void testFindPetByUID() throws Exception {
+
+    }
+
+    @Test
+    public void testGetClientPets() throws Exception {
+
+    }
+
+    @Test
+    public void testRemoveClient() throws Exception {
+
+    }
+
+    @Test
+    public void testRemovePet() throws Exception {
+
+    }
+}

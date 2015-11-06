@@ -26,6 +26,6 @@ public class ShowPetsOfClient implements VetAction {
 
     @Override
     public String info() {
-        return "Press 4 to show pets";
+        return String.format("Press %d to show pets", key());
     }
 }
