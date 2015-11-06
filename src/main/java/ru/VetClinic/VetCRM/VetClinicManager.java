@@ -1,6 +1,9 @@
 package ru.VetClinic.VetCRM;
 
 import ru.VetClinic.VetCRM.actions.client.*;
+import ru.VetClinic.VetCRM.actions.menu.ShowAbout;
+import ru.VetClinic.VetCRM.actions.menu.ShowClientSection;
+import ru.VetClinic.VetCRM.actions.menu.ShowPetSection;
 import ru.VetClinic.VetCRM.actions.pet.HealthSwitcher;
 import ru.VetClinic.VetCRM.actions.pet.RemovePet;
 import ru.VetClinic.VetCRM.actions.pet.ShowAllPets;
@@ -34,6 +37,10 @@ public class VetClinicManager {
         vetClinic.loadPetAction(new RemovePet());
         vetClinic.loadPetAction(new ShowAllPets());
         vetClinic.loadPetAction(new ShowAllSickPets());
+
+        vetClinic.loadMenuAction(new ShowClientSection());
+        vetClinic.loadMenuAction(new ShowPetSection());
+        vetClinic.loadMenuAction(new ShowAbout());
     }
 
     public void runVetClinic() {

@@ -26,6 +26,12 @@ public class VetClinic {
     private List<VetAction> clientActions = new ArrayList<>();
     private List<VetAction> petActions = new ArrayList<>();
 
+    public List<VetAction> getMenuActions() {
+        return menuActions;
+    }
+
+    private List<VetAction> menuActions = new ArrayList<>();
+
     public List<VetAction> getClientActions() {
         return clientActions;
     }
@@ -41,6 +47,11 @@ public class VetClinic {
     public void loadClientAction(VetAction action) {
         clientActions.add(action.key(), action);
     }
+
+    public void loadMenuAction(VetAction action) {
+        menuActions.add(action.key(), action);
+    }
+
 
 
     public VetClinic(String name) {
