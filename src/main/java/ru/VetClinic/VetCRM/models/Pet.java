@@ -19,6 +19,7 @@ public class Pet extends Animal { //TODO придумать уникальный
 
     private static final AtomicInteger petCounter = new AtomicInteger(0);
 
+
     public Pet(PetType petType, String petName) {
         this.petType = petType;
         this.petName = petName;

@@ -25,9 +25,15 @@ public class AddPetToClient implements VetAction {
         int clientId = vetClinic.findClientByName(clientName).getId();
         System.out.println("Enter name of pet");
         String petName = userInput.getString();
-        Pet pet = new Pet(PetType.UNKNOWNMONSTER, petName); //как сделать выбор?
+        System.out.println("Enter type of pet. (cat, dog, fish or crocodile)");
+        String petType;
+        while (!PetType.contains(petType = userInput.getString())) {
+            System.out.println("Wrong pet type!");
+        }
+
+        Pet pet = new Pet(PetType.valueOf(petType.toUpperCase()), petName); //как сделать выбор?
         vetClinic.addPet(clientId, pet);
-        System.out.printf("Pet %s to client %s was successfully added", petName, clientName);
+        System.out.printf("Pet %s to client %s was successfully added\n", petName, clientName);
     }
 
     @Override

@@ -57,13 +57,20 @@ public class VetClinicManager {
         }
 
         int userInputNumber = userInput.getNumber(0, vetClinic.getMenuActions().size());
-
-        for (VetAction vetAction : vetClinic.getMenuActions()) {
-            if (userInputNumber==vetAction.key()) {
-                vetAction.execute(userInput, vetClinic);
-            }
+        if (userInputNumber == 1)
+        {
+            showClientsSection();
+            showMainMenu();
         }
-
+        else {
+            showPetsSection();
+            showMainMenu();
+        }
+//        for (VetAction vetAction : vetClinic.getMenuActions()) {
+//            if (userInputNumber == vetAction.key()) {
+//                vetAction.execute(userInput, vetClinic);
+//            }
+//        }
     }
 
     private void showPetsSection() {
@@ -80,7 +87,7 @@ public class VetClinicManager {
         }
         int userInputNumber = userInput.getNumber(0, vetClinic.getClientActions().size());
         for (VetAction vetAction : vetClinic.getClientActions()) {
-            if (userInputNumber==vetAction.key()) {
+            if (userInputNumber == vetAction.key()) {
                 vetAction.execute(userInput, vetClinic);
             }
         }
