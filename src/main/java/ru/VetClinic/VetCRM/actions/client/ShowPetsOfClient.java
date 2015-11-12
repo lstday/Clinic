@@ -3,6 +3,7 @@ package ru.VetClinic.VetCRM.actions.client;
 import ru.VetClinic.VetCRM.ReadUserInput;
 import ru.VetClinic.VetCRM.VetAction;
 import ru.VetClinic.VetCRM.VetClinic;
+import ru.VetClinic.VetCRM.models.Client;
 import ru.VetClinic.VetCRM.models.Pet;
 
 /**
@@ -17,10 +18,20 @@ public class ShowPetsOfClient implements VetAction {
 
     @Override
     public void execute(ReadUserInput userInput, VetClinic vetClinic) {
-        System.out.println("Enter Client name to show his pets");
-        String clientName = userInput.getString();
-        for (Pet pet : vetClinic.findClientByName(clientName).getPetList()) {
-            System.out.println(pet.getId() + " " + pet.getPetType() + " " + pet.getPetName());
+        if (!vetClinic.getClientList().isEmpty()) {
+            System.out.println("Enter Client name to show his pets");
+//        String clientName = userInput.getString();
+            String clientName;
+            Client client;
+            while (!vetClinic.getClientList().contains(vetClinic.findClientByName(clientName = userInput.getString()))) {
+                System.out.println("Enter RIGHT name of user to add him pet");
+            }
+            client = vetClinic.findClientByName(clientName);
+            for (Pet pet : client.getPetList()) {
+                System.out.println(pet.getId() + " " + pet.getPetType() + " " + pet.getPetName());
+            }
+        } else {
+            System.out.println("We have't clients!");
         }
     }
 

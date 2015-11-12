@@ -57,15 +57,22 @@ public class VetClinicManager {
         }
 
         int userInputNumber = userInput.getNumber(0, vetClinic.getMenuActions().size());
+
         if (userInputNumber == 1)
         {
             showClientsSection();
             showMainMenu();
         }
-        else {
+        else if (userInputNumber == 2){
             showPetsSection();
             showMainMenu();
         }
+        else if (userInputNumber == 3){
+            vetClinic.getMenuActions().get(2).execute(userInput, vetClinic);
+            showMainMenu();
+        }
+
+
 //        for (VetAction vetAction : vetClinic.getMenuActions()) {
 //            if (userInputNumber == vetAction.key()) {
 //                vetAction.execute(userInput, vetClinic);

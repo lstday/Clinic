@@ -3,6 +3,7 @@ package ru.VetClinic.VetCRM.actions.menu;
 import ru.VetClinic.VetCRM.ReadUserInput;
 import ru.VetClinic.VetCRM.VetAction;
 import ru.VetClinic.VetCRM.VetClinic;
+import ru.VetClinic.VetCRM.VetClinicManager;
 
 /**
  * Created by lstday
@@ -16,7 +17,12 @@ public class ShowClientSection implements VetAction{
 
     @Override
     public void execute(ReadUserInput userInput, VetClinic vetClinic) {
-
+//        try {
+//            VetClinicManager vcm = new VetClinicManager(vetClinic);
+//            vcm.getClass().getMethod("showClientsSection", null);
+//        } catch (NoSuchMethodException e) {
+//            e.printStackTrace();
+//        }
     }
 
     @Override

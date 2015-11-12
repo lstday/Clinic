@@ -16,8 +16,8 @@ public class RemoveClient implements VetAction {
 
     @Override
     public void execute(ReadUserInput userInput, VetClinic vetClinic) {
-        System.out.println("Enter client id to remove");
-        int clientId = userInput.getNumber(0, vetClinic.getClientList().size());
+        System.out.printf("Enter client id to remove(from %d to %d)\n", 1, vetClinic.getClientList().size());
+        int clientId = userInput.getNumber(1, vetClinic.getClientList().size());
         vetClinic.removeClient(clientId);
         System.out.printf("Client %d successfully removed!\n", clientId);
     }

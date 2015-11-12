@@ -17,9 +17,12 @@ public class ShowAllClients implements VetAction {
 
     @Override
     public void execute(ReadUserInput userInput, VetClinic vetClinic) {
-        System.out.println("There are this clients:");
-        for (Client client : vetClinic.getClientList()) {
-            System.out.println(client.getId() + " " + client.getName());
+        if (vetClinic.getClientList().isEmpty()) System.out.println("We have't clients!");
+        else {
+            System.out.println("There are this clients:");
+            for (Client client : vetClinic.getClientList()) {
+                System.out.println(client.getId() + " " + client.getName());
+            }
         }
     }
 

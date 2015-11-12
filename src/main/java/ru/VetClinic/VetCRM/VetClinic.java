@@ -56,7 +56,6 @@ public class VetClinic {
     }
 
 
-
     public VetClinic(String name) {
         this.name = name;
     }
